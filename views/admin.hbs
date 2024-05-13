@@ -1,0 +1,48 @@
+<!-- Кнопка выхода из админки -->
+<div class="top">
+  <a href="/" class="top__logout">
+    Назад
+  </a>
+</div>
+<!-- Конец кнопки выхода из админки -->
+
+
+<!-- Фоновая картинка админки -->
+<div class="background__image">
+  <img src="/image/mad-max-game-5k-t2-3840x2160.jpg" alt="картинка админки">
+</div>
+<!-- Конец фоновой картинки админки -->
+
+
+<!-- Форма создания нового чата -->
+<div class="adm">
+
+  
+
+  {{#if error}}
+    <div class="reg__right__error">{{@root.error}}</div>
+  {{/if}}
+
+  {{#if success}}
+    <div class="reg__right__success">{{@root.success}}</div>
+  {{/if}}
+
+  <div class="adm__title">
+    Создание чата
+  </div>
+  <div class="adm__description">
+    Сообщения в чате не хранят никакой информации кроме его <br/>
+     создателя, время публикации, самого сообщения.
+  </div>
+  <form action="/createchat" method="POST">
+    <div class="adm__form__pole">
+      <div class="adm__form__pole__name">
+        Название:
+      </div>
+      <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+      <input name="chat" type="text" placeholder="English">
+    </div>
+     <button>Создать</button> 
+  </form>
+</div>
+<!-- Конец формы создания новго чата -->

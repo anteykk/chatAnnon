@@ -1,0 +1,139 @@
+
+<!-- Верх главного сайта -->
+<div class="top">
+  <a href="/logout" class="top__logout">
+    Выход
+  </a>
+  <div class="top__user">
+    <div class="top__user__name">
+      {{name}}
+    </div>
+    <div class="top__user__img">
+      <img src="/image/014-reaper.png" alt="картинка">
+    </div>
+  </div>
+</div>
+<!-- Конец верха главного сайта -->
+
+
+
+<!-- Список всех чатов -->
+<div class="bottom">
+  <div class="bottom__title">
+    Анонимные чаты
+  </div>
+  <div class="bottom__line"></div>
+
+  <div class="mini-block">
+
+    {{#each seeChat}}
+      {{#each this}}
+        {{#if name}}
+          <div class="bottom__chat">
+
+           <!-- whocreate это id пользователя создавшего а userId это id пользователя в текущей сессии -->   
+           {{#ifeq whocreate @root.userId}} 
+            
+              <a href="/delete/{{_id}}" class="bottom__chat__close">
+                <img src="/image/cancel.png" alt="close">
+              </a>            
+          
+            {{/ifeq}} 
+
+
+            <a href="/chat/{{_id}}" class="bottom__chat_img">
+              <img src="/image/010-ghost.png" alt="привидения">
+            </a>
+            <div class="bottom__chat__name">{{name}}</div>
+            <span class="bottom__chat__counter">{{mesSum}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+
+
+  </div>
+  <input id="data" type="hidden" data-csrf='{{@root.csrf}}'>
+  <div class="loading__more">Загрузить еще</div>
+
+</div>
+<!-- Конец списка всех чатов -->
+
+
+<!-- ТОП 5 чатов сообщений -->
+
+<div class="bottom topfive">
+  <div class="bottom__title">
+    Самые активные (ТОП-5)
+  </div>
+  <div class="bottom__line"></div>
+
+  <div class="mini-block">
+    {{#each topFive}}
+      {{#each this}}
+        {{#if name}}
+          <div class="bottom__chat">
+
+           <!-- whocreate это id пользователя создавшего а userId это id пользователя в текущей сессии -->   
+           {{#ifeq whocreate @root.userId}} 
+            
+              <a href="/delete/{{_id}}" class="bottom__chat__close">
+                <img src="/image/cancel.png" alt="close">
+              </a>            
+          
+            {{/ifeq}} 
+
+
+            <a href="/chat/{{_id}}" class="bottom__chat_img">
+              <img src="/image/021-king.png" alt="привидения">
+            </a>
+            <div class="bottom__chat__name">{{name}}</div>
+            <span class="bottom__chat__counter">{{mesSum}}</span>
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/each}}
+  </div>
+
+</div>  
+
+<!-- Конец ТОП 5 чатов сообщений -->
+
+
+
+<!-- Админка создания чатов -->
+<div class="bottom">
+  <div class="bottom__title">
+    Админка создания чата
+  </div>
+  <div class="bottom__line">
+    Создать чат
+  </div>
+  <div class="bottom__bt">
+    <a href="/adminka" class="bottom__bt__button">Создать чат</a>
+    <div class="bottom__bt__available">
+      Создано   {{numChat}} / 5
+    </div>
+  </div>
+</div>
+<!-- Конец админки создания чатов -->
+
+
+<a href="https://anteyku.com/" class="created">
+  Created by Anteyku 
+</a>
+
+<script src="/loading.js"></script>
+
+<!-- Подключаю библиотеку Socket IO к клиентской стороне -->
+<script src = "/socket.io/socket.io.js"></script>
+
+<script>
+
+    // Соединяюсь со своим сервером
+   socket = io(`http://localhost:3001`);
+
+
+
+   
+</script>

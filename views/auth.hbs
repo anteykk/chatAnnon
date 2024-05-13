@@ -1,0 +1,60 @@
+
+<!-- Регистрация -->
+<div id="auth" class="reg">
+
+  {{#if error}}
+    <div class="reg__right__error">{{@root.error}}</div>
+  {{/if}}
+
+  {{#if success}}
+    <div class="reg__right__success">{{@root.success}}</div>
+  {{/if}}
+
+
+  <div class="reg__left">
+    <div class="reg__left__img">
+      <img src="/617bdb26c79cc.png" alt="">
+    </div>
+  </div>
+  <div class="reg__right">
+    <div class="reg__right__title">Авторизация</div>
+
+
+
+    <form action="/auth" method="POST">
+
+        <div class="reg__right__field">
+          <div class="reg__right__field__name">
+            Логин:
+          </div>
+          <input name="login" type="text" placeholder="nick">
+        </div>
+
+        <div class="reg__right__field">
+          <div class="reg__right__field__name">
+            Пароль:
+          </div>
+          <input name="password" type="password" placeholder="•••••••">
+        </div>     
+
+        <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+        <button type="submit">Авторизация</button>
+
+        <a href="/register">Регистрация</a>
+
+    </form>
+
+
+
+  </div>
+</div> 
+<!-- Конец регистрации -->
+
+
+<!-- Описание -->
+<div class="description">
+  Сайт анонимных чатов.
+   За основу чатов взята технология Socket io. Создано Web FullStack
+    Developer - Anteyku (https://anteyku.com/)
+</div>
+<!-- Конец описания -->
